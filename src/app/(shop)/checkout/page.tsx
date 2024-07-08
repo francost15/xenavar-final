@@ -10,7 +10,7 @@ const productsInCart = [
   // initialData.products[2],
 ];
 // eslint-disable-next-line react/display-name
-export default function() {
+export default function CheckoutPage() {
   return (
     <div className="flex justify-center items-center mb-72 px-8 sm:px-0 ">
       <div className="flex flex-col w-[1000px]">
@@ -70,7 +70,7 @@ export default function() {
               <div className="mt-5 mb-2 w-full">
                 <p className="mb-5">
                   <span className="text-xs">
-                    Al hacer clic en "Colocar orden", aceptas nuestros <a href="#" className="underline">terminos y condiciones</a> asi como <a href="#" className="underline">politica de privacidad</a>
+                    Al hacer clic en &quot;Colocar orden&quot;, aceptas nuestros <a href="#" className="underline">terminos y condiciones</a> asi como <a href="#" className="underline">politica de privacidad</a>
                   </span>
                 </p>
                 <Link className="flex btn-primary justify-center" href="/orders/123">

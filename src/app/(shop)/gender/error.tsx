@@ -1,6 +1,7 @@
+"use client"
 import { PageNotFount } from "@/components";
 
-export default function SlugNotFound() {
+export default function GenderErrorP() {
   return (
     <PageNotFount/>
   );

@@ -17,7 +17,7 @@ interface Props{
   }
 }
 // eslint-disable-next-line react/display-name
-export default function({params}:Props) {
+export default function OrdersById({params}:Props) {
   const {id} = params;
   return (
     <div className="flex justify-center items-center mb-72 px-8 sm:px-0 ">

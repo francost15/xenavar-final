@@ -11,7 +11,7 @@ const productsInCart = [
   initialData.products[2],
 ];
 // eslint-disable-next-line react/display-name
-export default function() {
+export default function CartPage() {
   // redirect('/empty')
   return (
     <div className="flex justify-center items-center mb-72 px-8 sm:px-0 ">

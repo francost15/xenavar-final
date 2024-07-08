@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 interface Props {
-    product: Product[];
+    product: Product;
 }
 export const ProductGridItem = ({product}:Props) => {
     const [displayImage, setdisplayImage] = useState(product.images[0])
