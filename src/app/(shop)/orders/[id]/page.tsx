@@ -1,106 +1,139 @@
-/* eslint-disable import/no-anonymous-default-export */
-
-import { Title } from "@/components";
-import { initialData } from "@/seed/seed";
-import clsx from "clsx";
+import { OrderStatus, PayPalButton, Title } from "@/components";
 import Image from "next/image";
-import Link from "next/link";
-import { IoCardOutline } from "react-icons/io5";
-const productsInCart = [
-  initialData.products[0],
-  // initialData.products[1],
-  // initialData.products[2],
-];
-interface Props{
-  params: {
-    id: string
-  }
-}
-// eslint-disable-next-line react/display-name
-export default function OrdersById({params}:Props) {
-  const {id} = params;
-  return (
-    <div className="flex justify-center items-center mb-72 px-8 sm:px-0 ">
-      <div className="flex flex-col w-[1000px]">
-        <Title title={`Orden #${id}`} />
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-          {/* carrito */}
-          <div className="flex flex-col mt-5">
-            <div className={
-              clsx(
-                "flex items-center rounded-lg py-2 px-3.5 text-xs font-bold text-white mb-5",
-                {
-                  'bg-red-500':false,
-                  'bg-green-700':true,
-                }
-              )
-            }>
-              <IoCardOutline size={30}/>
-              {/* <span className="mx-2">Pendiente de pago</span> */}
-              <span className="mx-2">Orden Pagada</span>
-            </div>
+import { getOrderById } from "@/actions/order/get-order-by-id";
+import { redirect } from "next/navigation";
+import { currencyFormat } from "@/utils";
+import { auth } from "@/auth.config";
 
-          {/* items */}
-            {productsInCart.map(product =>(
-                <div key={product.slug} className="flex mb-5">
-                  <Image src={`/products/${product.images[0]}`}
+interface Props {
+  params: {
+    id: string;
+  };
+}
+
+export default async function OrdersByIdPage({ params }: Props) {
+  const { id } = params;
+  const session = await auth();
+
+  // Todo: Llamar el server action
+
+  const { ok, order } = await getOrderById(id);
+
+  if (!ok) {
+    redirect("/");
+  }
+
+  const address = order!.OrderAddress;
+
+  return (
+    <div className="flex justify-center items-center mb-72 px-10 sm:px-0">
+      <div className="flex flex-col w-[1000px]">
+        <Title title={`Orden #${id.split("-").at(-1)}`} />
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+          {/* Carrito */}
+          <div className="flex flex-col mt-5">
+          <OrderStatus isPaid={order!.isPaid ?? false} />
+            {/* Items */}
+            {order!.OrderItem.map((item) => (
+              <div
+                key={item.product.slug + "-" + item.size}
+                className="flex mb-5"
+              >
+                <Image
+                  src={`/products/${item.product.ProductImage[0].url}`}
                   width={100}
                   height={100}
                   style={{
-                    width: '100px',
-                    height: '100px',
+                    width: "100px",
+                    height: "100px",
                   }}
-                  alt={product.title}
-                  className="mr-5 rounded"/>
-                  <div>
-                    <p>{product.title}</p>
-                    <p>${product.price} x 3</p>
-                    <p className="font-bold">Subtotal: ${product.price * 3}</p>
-                  </div>
+                  alt={item.product.title}
+                  className="mr-5 rounded"
+                />
+
+                <div>
+                  <p>{item.product.title}</p>
+                  <p>
+                    ${item.price} x {item.quantity}
+                  </p>
+                  <p className="font-bold">
+                    Subtotal: {currencyFormat(item.price * item.quantity)}
+                  </p>
                 </div>
-            ))
-            }
+              </div>
+            ))}
           </div>
-          {/* checkout-resumen de orden */}
+
+          {/* Checkout - Resumen de orden */}
           <div className="bg-white rounded-xl shadow-xl p-7">
-              <h2 className="text-2xl mb-2">Direccion de entrega</h2>
-              <div className="mb-10">
-                <p className="text-2xl mb-2">Fernando Herrera</p>
-                <p>Av. Siempre Viva 742</p>
-                <p>Springfield</p>
-                <p>Querétaro</p>
-                <p>cp .76113</p>
-              </div>
-              <div className="w-full h-0.5 rounded bg-gray-200 mb-10"/>
-              <h2 className="text-2xl mb-2">Resumen de orden</h2>
-              <div className="grid grid-cols-2">
-                <span>No.Productos</span>
-                <span className="text-right">3 articulos</span>
-                <span>Subtotal</span>
-                <span className="text-right">$ 100</span>
-                <span>Impuestos (15%)</span>
-                <span className="text-right">$ 100</span>
-                <span className="text-2xl mt-5">Total:</span>
-                <span className="text-right text-2xl mt-5">$ 200</span>
-
-              </div>
-              <div className="mt-5 mb-2 w-full">
-              <div className={
-              clsx(
-                "flex items-center rounded-lg py-2 px-3.5 text-xs font-bold text-white mb-5",
-                {
-                  'bg-red-500':false,
-                  'bg-green-700':true,
-                }
-              )
-            }>
-              <IoCardOutline size={30}/>
-              {/* <span className="mx-2">Pendiente de pago</span> */}
-              <span className="mx-2">Orden Pagada</span>
+            <h2 className="text-2xl mb-2">Dirección de entrega</h2>
+            <div className="mb-10">
+              <p className="text-xl">
+                {address!.firstName} {address!.lastName}
+              </p>
+              <p>{address!.address}</p>
+              <p>{address!.address2}</p>
+              <p>{address!.postalCode}</p>
+              <p>
+                {address!.city}, {address!.countryId}
+              </p>
+              <p>{address!.phone}</p>
             </div>
 
-              </div>
+            {/* Divider */}
+            <div className="w-full h-0.5 rounded bg-gray-200 mb-10" />
+
+            <h2 className="text-2xl mb-2">Resumen de orden</h2>
+
+            <div className="grid grid-cols-2">
+              <span>No. Productos</span>
+              <span className="text-right">
+                {order?.itemsInOrder === 1
+                  ? "1 artículo"
+                  : `${order?.itemsInOrder} artículos`}
+              </span>
+
+              <span>Subtotal</span>
+              <span className="text-right">
+                {currencyFormat(order!.subTotal)}
+              </span>
+
+              <span>Impuestos (15%)</span>
+              <span className="text-right">{currencyFormat(order!.tax)}</span>
+
+              <span className="mt-5 text-2xl">Total:</span>
+              <span className="mt-5 text-2xl text-right">
+                {currencyFormat(order!.total)}
+              </span>
             </div>
+
+            <div className="mt-5 mb-2 w-full">
+              {
+                (session?.user?.id !== order?.userId ) && 
+                (
+                  order?.isPaid ? (
+                 <>
+                 </>
+                  ):(
+                    <div className="bg-red-500 rounded-md p-3 text-center">
+                    <span className="text-white font-semibold">Solo el usuario que realizó la compra puede realizar el pago</span>
+                  </div>
+                  )
+                )
+              }
+              {
+                order?.isPaid ? (
+                  <OrderStatus isPaid={order!.isPaid ?? false} />
+                ):(
+                (session?.user?.id === order?.userId) && (
+                <PayPalButton
+                  orderId={order!.id} 
+                  amount={order!.total} />
+                )
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>
