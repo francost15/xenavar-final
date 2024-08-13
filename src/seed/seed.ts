@@ -4,12 +4,13 @@ interface SeedProduct {
   images: string[];
   inStock: number;
   price: number;
-  sizes: ValidSizes[];
+  flavors: ValidFlavors[];
   slug: string;
   tags: string[];
   title: string;
   type: ValidTypes;
   gender: "men" | "women" | "kid" | "unisex";
+  marca: ValidMarcas;
 }
 interface SeedUser {
   email: string;
@@ -18,31 +19,123 @@ interface SeedUser {
   role: "admin" | "user";
 }
 
-type ValidSizes = "XS" | "S" | "M" | "L" | "XL" | "XXL" | "XXXL";
-type ValidTypes = "shirts" | "pants" | "hoodies" | "hats";
+type ValidFlavors =
+  | "Chocolate"
+  | "Fresa"
+  | "Vainilla"
+  | "StrawBerry"
+  | "Mango"
+  | "Mazapan"
+  | "Coco"
+  | "BlueBerry"
+  | "Churro";
+type ValidTypes =
+  | "shirts"
+  | "pants"
+  | "hoodies"
+  | "hats"
+  | "proteinas"
+  | "suplementos"
+  | "vitaminas"
+  | "minerales"
+  | "creatinas"
+  | "aminoacidos"
+  | "energeticos"
+  | "quemadores"
+  | "ganadores"
+  | "preentrenos"
+  | "postentrenos"
+  | "barras"
+  | "snacks";
+type ValidMarcas =
+  | "mutant"
+  | "43Suplements"
+  | "birdman"
+  | "bhpNutrtion"
+  | "bpiSports"
+  | "bSN"
+  | "dragonPharma"
+  | "dymatize"
+  | "engyNutrition"
+  | "gat"
+  | "ghost"
+  | "insaneLabz"
+  | "krakenLabz"
+  | "metaNutrition"
+  | "muscleMeds"
+  | "musclePharm"
+  | "muscleTech"
+  | "nextEvolution"
+  | "nutrex"
+  | "optimunNutrition"
+  | "proSupps"
+  | "raw"
+  | "rc"
+  | "ryse"
+  | "universalNutrition";
 
 interface SeedData {
   users: SeedUser[];
   categories: string[];
   products: SeedProduct[];
+  marcas: string[];
 }
 
 export const initialData: SeedData = {
   users: [
     {
-      email: "francost15@gmail.com",
-      name: "franco sanchez",
-      password: bcryptjs.hashSync("francost15"),
+      email: "xenavar15@gmail.com",
+      name: "Ricardo Navar",
+      password: bcryptjs.hashSync("xenavar15"),
       role: "admin",
     },
-    {
-      email: "fernando@google.com",
-      name: "Fernando Herrera",
-      password: bcryptjs.hashSync("123456"),
-      role: "user",
-    },
   ],
-  categories: ["Shirts", "Pants", "Hoodies", "Hats"],
+  categories: [
+    "pants",
+    "hoodies",
+    "hats",
+    "shirts",
+    "proteinas",
+    "suplementos",
+    "vitaminas",
+    "minerales",
+    "creatinas",
+    "aminoacidos",
+    "energeticos",
+    "quemadores",
+    "ganadores",
+    "preentrenos",
+    "postentrenos",
+    "barras",
+    "snacks",
+  ],
+  marcas: [
+    "mutant",
+    "43Suplements",
+    "birdman",
+    "bhpNutrtion",
+    "bpiSports",
+    "bSN",
+    "dragonPharma",
+    "dymatize",
+    "engyNutrition",
+    "gat",
+    "ghost",
+    "insaneLabz",
+    "krakenLabz",
+    "metaNutrition",
+    "muscleMeds",
+    "musclePharm",
+    "muscleTech",
+    "nextEvolution",
+    "nutrex",
+    "optimunNutrition",
+    "proSupps",
+    "raw",
+    "rc",
+    "ryse",
+    "universalNutrition",
+  ],
   products: [
     {
       description:
@@ -50,12 +143,13 @@ export const initialData: SeedData = {
       images: ["1740176-00-A_0_2000.jpg", "1740176-00-A_1.jpg"],
       inStock: 7,
       price: 75,
-      sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "mens_chill_crew_neck_sweatshirt",
       type: "shirts",
       tags: ["sweatshirt"],
       title: "Men’s Chill Crew Neck Sweatshirt",
       gender: "men",
+      marca: "43Suplements",
     },
     {
       description:
@@ -63,12 +157,13 @@ export const initialData: SeedData = {
       images: ["1740507-00-A_0_2000.jpg", "1740507-00-A_1.jpg"],
       inStock: 5,
       price: 200,
-      sizes: ["XS", "S", "M", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_quilted_shirt_jacket",
-      type: "shirts",
+      type: "proteinas",
       tags: ["jacket"],
       title: "Men's Quilted Shirt Jacket",
       gender: "men",
+      marca: "mutant",
     },
 
     {
@@ -77,12 +172,13 @@ export const initialData: SeedData = {
       images: ["1740250-00-A_0_2000.jpg", "1740250-00-A_1.jpg"],
       inStock: 10,
       price: 130,
-      sizes: ["S", "M", "L", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_raven_lightweight_zip_up_bomber_jacket",
-      type: "shirts",
+      type: "proteinas",
       tags: ["shirt"],
       title: "Men's Raven Lightweight Zip Up Bomber Jacket",
       gender: "men",
+      marca: "mutant",
     },
 
     {
@@ -91,12 +187,13 @@ export const initialData: SeedData = {
       images: ["1740280-00-A_0_2000.jpg", "1740280-00-A_1.jpg"],
       inStock: 50,
       price: 45,
-      sizes: ["XS", "S", "M", "L"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_turbine_long_sleeve_tee",
-      type: "shirts",
+      type: "proteinas",
       tags: ["shirt"],
       title: "Men's Turbine Long Sleeve Tee",
       gender: "men",
+      marca: "43Suplements",
     },
     {
       description:
@@ -104,12 +201,13 @@ export const initialData: SeedData = {
       images: ["1741416-00-A_0_2000.jpg", "1741416-00-A_1.jpg"],
       inStock: 50,
       price: 40,
-      sizes: ["M", "L", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_turbine_short_sleeve_tee",
-      type: "shirts",
+      type: "creatinas",
       tags: ["shirt"],
       title: "Men's Turbine Short Sleeve Tee",
       gender: "men",
+      marca: "bhpNutrtion",
     },
     {
       description:
@@ -117,12 +215,13 @@ export const initialData: SeedData = {
       images: ["7654393-00-A_2_2000.jpg", "7654393-00-A_3.jpg"],
       inStock: 0,
       price: 35,
-      sizes: ["M", "L", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_cybertruck_owl_tee",
-      type: "shirts",
+      type: "creatinas",
       tags: ["shirt"],
       title: "Men's Cybertruck Owl Tee",
       gender: "men",
+      marca: "bhpNutrtion",
     },
     {
       description:
@@ -130,12 +229,13 @@ export const initialData: SeedData = {
       images: ["1703767-00-A_0_2000.jpg", "1703767-00-A_1.jpg"],
       inStock: 15,
       price: 35,
-      sizes: ["S", "M", "L", "XL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_solar_roof_tee",
-      type: "shirts",
+      type: "creatinas",
       tags: ["shirt"],
       title: "Men's Solar Roof Tee",
       gender: "men",
+      marca: "dragonPharma",
     },
     {
       description:
@@ -143,12 +243,13 @@ export const initialData: SeedData = {
       images: ["1700280-00-A_0_2000.jpg", "1700280-00-A_1.jpg"],
       inStock: 17,
       price: 35,
-      sizes: ["XS", "S", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_let_the_sun_shine_tee",
-      type: "shirts",
+      type: "creatinas",
       tags: ["shirt"],
       title: "Men's Let the Sun Shine Tee",
       gender: "men",
+      marca: "gat",
     },
     {
       description:
@@ -156,12 +257,13 @@ export const initialData: SeedData = {
       images: ["8764734-00-A_0_2000.jpg", "8764734-00-A_1.jpg"],
       inStock: 12,
       price: 35,
-      sizes: ["XS", "S", "M"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_3d_large_wordmark_tee",
-      type: "shirts",
+      type: "vitaminas",
       tags: ["shirt"],
       title: "Men's 3D Large Wordmark Tee",
       gender: "men",
+      marca: "ghost",
     },
     {
       description:
@@ -169,12 +271,13 @@ export const initialData: SeedData = {
       images: ["7652426-00-A_0_2000.jpg", "7652426-00-A_1.jpg"],
       inStock: 5,
       price: 35,
-      sizes: ["XS", "S"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_3d_t_logo_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Men's 3D T Logo Tee",
       gender: "men",
+      marca: "insaneLabz",
     },
     {
       description:
@@ -182,12 +285,13 @@ export const initialData: SeedData = {
       images: ["8528839-00-A_0_2000.jpg", "8528839-00-A_2.jpg"],
       inStock: 2,
       price: 35,
-      sizes: ["XS", "S", "M"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_3d_small_wordmark_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Men’s 3D Small Wordmark Tee",
       gender: "men",
+      marca: "krakenLabz",
     },
     {
       description:
@@ -195,12 +299,13 @@ export const initialData: SeedData = {
       images: ["1549268-00-A_0_2000.jpg", "1549268-00-A_2.jpg"],
       inStock: 82,
       price: 35,
-      sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_plaid_mode_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Men's Plaid Mode Tee",
       gender: "men",
+      marca: "metaNutrition",
     },
     {
       description:
@@ -208,12 +313,13 @@ export const initialData: SeedData = {
       images: ["9877034-00-A_0_2000.jpg", "9877034-00-A_2.jpg"],
       inStock: 24,
       price: 35,
-      sizes: ["XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_powerwall_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Men's Powerwall Tee",
       gender: "men",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -221,12 +327,13 @@ export const initialData: SeedData = {
       images: ["1633802-00-A_0_2000.jpg", "1633802-00-A_2.jpg"],
       inStock: 5,
       price: 30,
-      sizes: ["XS", "S", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_battery_day_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Men's Battery Day Tee",
       gender: "men",
+      marca: "musclePharm",
     },
     {
       description:
@@ -234,12 +341,13 @@ export const initialData: SeedData = {
       images: ["7654399-00-A_0_2000.jpg", "7654399-00-A_1.jpg"],
       inStock: 150,
       price: 30,
-      sizes: ["M", "L"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_cybertruck_bulletproof_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Men’s Cybertruck Bulletproof Tee",
       gender: "men",
+      marca: "muscleTech",
     },
     {
       description:
@@ -247,12 +355,13 @@ export const initialData: SeedData = {
       images: ["7652410-00-A_0.jpg", "7652410-00-A_1_2000.jpg"],
       inStock: 10,
       price: 35,
-      sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_haha_yes_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Men's Haha Yes Tee",
       gender: "men",
+      marca: "nextEvolution",
     },
     {
       description:
@@ -260,12 +369,13 @@ export const initialData: SeedData = {
       images: ["8764600-00-A_0_2000.jpg", "8764600-00-A_2.jpg"],
       inStock: 34,
       price: 35,
-      sizes: ["XS", "S", "M", "L"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_s3xy_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Men's S3XY Tee",
       gender: "men",
+      marca: "nutrex",
     },
     {
       description:
@@ -273,12 +383,13 @@ export const initialData: SeedData = {
       images: ["8764813-00-A_0_2000.jpg", "8764813-00-A_1.jpg"],
       inStock: 15,
       price: 40,
-      sizes: ["XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_3d_wordmark_long_sleeve_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Men's 3D Wordmark Long Sleeve Tee",
       gender: "men",
+      marca: "optimunNutrition",
     },
     {
       description:
@@ -286,12 +397,13 @@ export const initialData: SeedData = {
       images: ["8529198-00-A_0_2000.jpg", "8529198-00-A_1.jpg"],
       inStock: 12,
       price: 40,
-      sizes: ["XS", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_3d_t_logo_long_sleeve_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Men's 3D T Logo Long Sleeve Tee",
       gender: "men",
+      marca: "proSupps",
     },
     {
       description:
@@ -299,12 +411,13 @@ export const initialData: SeedData = {
       images: ["1740245-00-A_0_2000.jpg", "1740245-00-A_1.jpg"],
       inStock: 10,
       price: 115,
-      sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_raven_lightweight_hoodie",
       type: "hoodies",
       tags: ["hoodie"],
       title: "Men's Raven Lightweight Hoodie",
       gender: "men",
+      marca: "raw",
     },
     {
       description:
@@ -312,12 +425,13 @@ export const initialData: SeedData = {
       images: ["1740051-00-A_0_2000.jpg", "1740051-00-A_1.jpg"],
       inStock: 10,
       price: 130,
-      sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "chill_pullover_hoodie",
       type: "hoodies",
       tags: ["hoodie"],
       title: "Chill Pullover Hoodie",
       gender: "unisex",
+      marca: "rc",
     },
     {
       description:
@@ -325,12 +439,13 @@ export const initialData: SeedData = {
       images: ["1741111-00-A_0_2000.jpg", "1741111-00-A_1.jpg"],
       inStock: 100,
       price: 85,
-      sizes: ["XS", "L", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_chill_full_zip_hoodie",
       type: "shirts",
       tags: ["shirt"],
       title: "Men's Chill Full Zip Hoodie",
       gender: "men",
+      marca: "ryse",
     },
     {
       description:
@@ -338,12 +453,13 @@ export const initialData: SeedData = {
       images: ["1740140-00-A_0_2000.jpg", "1740140-00-A_1.jpg"],
       inStock: 7,
       price: 85,
-      sizes: ["XS", "S", "M"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_chill_quarter_zip_pullover_-_gray",
       type: "shirts",
       tags: ["shirt"],
       title: "Men's Chill Quarter Zip Pullover - Gray",
       gender: "men",
+      marca: "universalNutrition",
     },
     {
       description:
@@ -351,12 +467,13 @@ export const initialData: SeedData = {
       images: ["1740145-00-A_2_2000.jpg", "1740145-00-A_1.jpg"],
       inStock: 15,
       price: 85,
-      sizes: ["XS", "S", "M", "L"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "men_chill_quarter_zip_pullover_-_white",
       type: "shirts",
       tags: ["shirt"],
       title: "Men's Chill Quarter Zip Pullover - White",
       gender: "men",
+      marca: "raw",
     },
     {
       description:
@@ -364,12 +481,13 @@ export const initialData: SeedData = {
       images: ["8529107-00-A_0_2000.jpg", "8529107-00-A_1.jpg"],
       inStock: 15,
       price: 70,
-      sizes: ["XS", "S", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "3d_large_wordmark_pullover_hoodie",
       type: "hoodies",
       tags: ["hoodie"],
       title: "3D Large Wordmark Pullover Hoodie",
       gender: "unisex",
+      marca: "ryse",
     },
     {
       description:
@@ -377,12 +495,13 @@ export const initialData: SeedData = {
       images: ["7654420-00-A_0_2000.jpg", "7654420-00-A_1_2000.jpg"],
       inStock: 13,
       price: 60,
-      sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "cybertruck_graffiti_hoodie",
       type: "hoodies",
       tags: ["hoodie"],
       title: "Cybertruck Graffiti Hoodie",
       gender: "unisex",
+      marca: "universalNutrition",
     },
     {
       description:
@@ -390,12 +509,13 @@ export const initialData: SeedData = {
       images: ["1657932-00-A_0_2000.jpg", "1657932-00-A_1.jpg"],
       inStock: 11,
       price: 30,
-      sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "relaxed_t_logo_hat",
       type: "hats",
       tags: ["hats"],
       title: "Relaxed T Logo Hat",
       gender: "unisex",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -403,12 +523,13 @@ export const initialData: SeedData = {
       images: ["1740417-00-A_0_2000.jpg", "1740417-00-A_1.jpg"],
       inStock: 13,
       price: 35,
-      sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "thermal_cuffed_beanie",
       type: "hats",
       tags: ["hats"],
       title: "Thermal Cuffed Beanie",
       gender: "unisex",
+      marca: "birdman",
     },
     {
       description:
@@ -416,12 +537,13 @@ export const initialData: SeedData = {
       images: ["1740535-00-A_0_2000.jpg", "1740535-00-A_1.jpg"],
       inStock: 85,
       price: 225,
-      sizes: ["XS", "S", "M"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "women_cropped_puffer_jacket",
       type: "hoodies",
       tags: ["hoodie"],
       title: "Women's Cropped Puffer Jacket",
       gender: "women",
+      marca: "birdman",
     },
     {
       description:
@@ -429,12 +551,13 @@ export const initialData: SeedData = {
       images: ["1740226-00-A_0_2000.jpg", "1740226-00-A_1.jpg"],
       inStock: 10,
       price: 130,
-      sizes: ["XS", "S", "M", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "women_chill_half_zip_cropped_hoodie",
       type: "hoodies",
       tags: ["hoodie"],
       title: "Women's Chill Half Zip Cropped Hoodie",
       gender: "women",
+      marca: "birdman",
     },
     {
       description:
@@ -442,12 +565,13 @@ export const initialData: SeedData = {
       images: ["1740260-00-A_0_2000.jpg", "1740260-00-A_1.jpg"],
       inStock: 9,
       price: 110,
-      sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "women_raven_slouchy_crew_sweatshirt",
       type: "hoodies",
       tags: ["hoodie"],
       title: "Women's Raven Slouchy Crew Sweatshirt",
       gender: "women",
+      marca: "birdman",
     },
     {
       description:
@@ -455,12 +579,13 @@ export const initialData: SeedData = {
       images: ["1740290-00-A_0_2000.jpg", "1740290-00-A_1.jpg"],
       inStock: 10,
       price: 45,
-      sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "women_turbine_cropped_long_sleeve_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Women's Turbine Cropped Long Sleeve Tee",
       gender: "women",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -468,12 +593,13 @@ export const initialData: SeedData = {
       images: ["1741441-00-A_0_2000.jpg", "1741441-00-A_1.jpg"],
       inStock: 0,
       price: 40,
-      sizes: ["XS", "S"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "women_turbine_cropped_short_sleeve_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Women's Turbine Cropped Short Sleeve Tee",
       gender: "women",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -481,12 +607,13 @@ export const initialData: SeedData = {
       images: ["8765090-00-A_0_2000.jpg", "8765090-00-A_1.jpg"],
       inStock: 30,
       price: 35,
-      sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "women_t_logo_short_sleeve_scoop_neck_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Women's T Logo Short Sleeve Scoop Neck Tee",
       gender: "women",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -494,12 +621,13 @@ export const initialData: SeedData = {
       images: ["8765100-00-A_0_2000.jpg", "8765100-00-A_1.jpg"],
       inStock: 16,
       price: 40,
-      sizes: ["XS", "S", "L", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "women_t_logo_long_sleeve_scoop_neck_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Women's T Logo Long Sleeve Scoop Neck Tee",
       gender: "women",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -507,12 +635,13 @@ export const initialData: SeedData = {
       images: ["8765120-00-A_0_2000.jpg", "8765120-00-A_1.jpg"],
       inStock: 18,
       price: 35,
-      sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "women_small_wordmark_short_sleeve_v-neck_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Women's Small Wordmark Short Sleeve V-Neck Tee",
       gender: "women",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -520,12 +649,13 @@ export const initialData: SeedData = {
       images: ["8765115-00-A_0_2000.jpg", "8765115-00-A_1.jpg"],
       inStock: 5,
       price: 35,
-      sizes: ["XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "women_large_wordmark_short_sleeve_crew_neck_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Women's Large Wordmark Short Sleeve Crew Neck Tee",
       gender: "women",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -533,12 +663,13 @@ export const initialData: SeedData = {
       images: ["1549275-00-A_0_2000.jpg", "1549275-00-A_1.jpg"],
       inStock: 16,
       price: 35,
-      sizes: ["S", "M"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "women_plaid_mode_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Women's Plaid Mode Tee",
       gender: "women",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -546,12 +677,13 @@ export const initialData: SeedData = {
       images: ["9877040-00-A_0_2000.jpg", "9877040-00-A_1.jpg"],
       inStock: 10,
       price: 130,
-      sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "women_powerwall_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Women’s Powerwall Tee",
       gender: "women",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -559,12 +691,13 @@ export const initialData: SeedData = {
       images: ["5645680-00-A_0_2000.jpg", "5645680-00-A_3.jpg"],
       inStock: 3,
       price: 90,
-      sizes: ["M", "L", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "women_corp_jacket",
       type: "shirts",
       tags: ["shirt"],
       title: "Women's Corp Jacket",
       gender: "women",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -572,12 +705,13 @@ export const initialData: SeedData = {
       images: ["1740270-00-A_0_2000.jpg", "1740270-00-A_1.jpg"],
       inStock: 162,
       price: 100,
-      sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "women_raven_joggers",
       type: "shirts",
       tags: ["shirt"],
       title: "Women's Raven Joggers",
       gender: "women",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -585,12 +719,13 @@ export const initialData: SeedData = {
       images: ["1742694-00-A_1_2000.jpg", "1742694-00-A_3.jpg"],
       inStock: 10,
       price: 30,
-      sizes: ["XS", "S", "M"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "kids_cybertruck_long_sleeve_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Kids Cybertruck Long Sleeve Tee",
       gender: "kid",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -598,12 +733,13 @@ export const initialData: SeedData = {
       images: ["8529312-00-A_0_2000.jpg", "8529312-00-A_1.jpg"],
       inStock: 0,
       price: 25,
-      sizes: ["XS", "S", "M"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "kids_scribble_t_logo_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Kids Scribble T Logo Tee",
       gender: "kid",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -611,12 +747,13 @@ export const initialData: SeedData = {
       images: ["8529342-00-A_0_2000.jpg", "8529342-00-A_1.jpg"],
       inStock: 10,
       price: 25,
-      sizes: ["XS", "S", "M"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "kids_cybertruck_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Kids Cybertruck Tee",
       gender: "kid",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -624,12 +761,13 @@ export const initialData: SeedData = {
       images: ["8529354-00-A_0_2000.jpg", "8529354-00-A_1.jpg"],
       inStock: 10,
       price: 30,
-      sizes: ["XS", "S", "M"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "kids_racing_stripe_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Kids Racing Stripe Tee",
       gender: "kid",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -637,12 +775,13 @@ export const initialData: SeedData = {
       images: ["7652465-00-A_0_2000.jpg", "7652465-00-A_1.jpg"],
       inStock: 10,
       price: 30,
-      sizes: ["XS", "S", "M"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "kids_3d_t_logo_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Kids 3D T Logo Tee",
       gender: "kid",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -650,12 +789,13 @@ export const initialData: SeedData = {
       images: ["100042307_0_2000.jpg", "100042307_alt_2000.jpg"],
       inStock: 10,
       price: 30,
-      sizes: ["XS", "S", "M"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "kids_checkered_tee",
       type: "shirts",
       tags: ["shirt"],
       title: "Kids Checkered Tee",
       gender: "kid",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -663,12 +803,13 @@ export const initialData: SeedData = {
       images: ["1473809-00-A_1_2000.jpg", "1473809-00-A_alt.jpg"],
       inStock: 16,
       price: 25,
-      sizes: ["XS", "S"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "made_on_earth_by_humans_onesie",
       type: "shirts",
       tags: ["shirt"],
       title: "Made on Earth by Humans Onesie",
       gender: "kid",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -676,12 +817,13 @@ export const initialData: SeedData = {
       images: ["8529387-00-A_0_2000.jpg", "8529387-00-A_1.jpg"],
       inStock: 0,
       price: 30,
-      sizes: ["XS", "S"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "scribble_t_logo_onesie",
       type: "shirts",
       tags: ["shirt"],
       title: "Scribble T Logo Onesie",
       gender: "kid",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -689,12 +831,13 @@ export const initialData: SeedData = {
       images: ["1473834-00-A_2_2000.jpg", "1473829-00-A_2_2000.jpg"],
       inStock: 10,
       price: 30,
-      sizes: ["XS", "S"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "zero_emissions_(almost)_onesie",
       type: "shirts",
       tags: ["shirt"],
       title: "Zero Emissions (Almost) Onesie",
       gender: "kid",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -702,12 +845,13 @@ export const initialData: SeedData = {
       images: ["1742702-00-A_0_2000.jpg", "1742702-00-A_1.jpg"],
       inStock: 10,
       price: 65,
-      sizes: ["XS", "S", "M"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "kids_cyberquad_bomber_jacket",
       type: "shirts",
       tags: ["shirt"],
       title: "Kids Cyberquad Bomber Jacket",
       gender: "kid",
+      marca: "muscleMeds",
     },
     {
       description:
@@ -715,12 +859,13 @@ export const initialData: SeedData = {
       images: ["1506211-00-A_0_2000.jpg", "1506211-00-A_1_2000.jpg"],
       inStock: 10,
       price: 30,
-      sizes: ["XS", "S", "M"],
+      flavors: ["Chocolate", "Fresa", "Vainilla", "StrawBerry", "Mango"],
       slug: "kids_corp_jacket",
       type: "shirts",
       tags: ["shirt"],
       title: "Kids Corp Jacket",
       gender: "kid",
+      marca: "muscleMeds",
     },
   ],
 };

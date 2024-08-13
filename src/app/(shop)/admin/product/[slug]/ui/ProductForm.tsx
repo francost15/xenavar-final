@@ -1,17 +1,19 @@
 "use client"
 import { useForm } from "react-hook-form";
-import { Category, Product, ProductImage as ProductWithImage } from "@/interfaces";
+import { Category, Marcas, Product, ProductImage as ProductWithImage } from "@/interfaces";
 import clsx from "clsx";
 import { createUpdateProduct, deleteProduct, deleteProductImage } from "@/actions";
 import { useRouter } from 'next/navigation';
 import { ProductImage } from '@/components';
 
+
 interface Props {
   product: Partial<Product> & { ProductImage?: ProductWithImage[] };
   categories: Category[];
+  marcas: Marcas[];
 }
 
-const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
+const  flavors= ["Chocolate","Fresa","Vainilla","StrawBerry","Mango","Mazapan","Coco","BlueBerry","Churro"];
 
 interface FormInputs {
   title: string;
@@ -19,14 +21,15 @@ interface FormInputs {
   description: string;
   price: number;
   inStock: number;
-  sizes: string[];
+  flavors: string[];
   tags: string;
+  marcaId:string;
   gender: "men" | "women" | "kid" | "unisex";
   categoryId: string;
   images?: FileList;
 }
 
-export const ProductForm = ({ product, categories }: Props) => {
+export const ProductForm = ({ product, categories, marcas }: Props) => {
   const router = useRouter();
 
   const {
@@ -40,17 +43,17 @@ export const ProductForm = ({ product, categories }: Props) => {
     defaultValues: {
       ...product,
       tags: product.tags?.join(", "),
-      sizes: product.sizes ?? [],
+      flavors: product.flavors ?? [],
       images: undefined,
     },
   });
 
-  watch("sizes");
+  watch("flavors");
 
-  const onSizeChanged = (size: string) => {
-    const sizes = new Set(getValues("sizes"));
-    sizes.has(size) ? sizes.delete(size) : sizes.add(size);
-    setValue("sizes", Array.from(sizes));
+  const onFlavorsChanged = (flavor: string) => {
+    const flavors = new Set(getValues("flavors"));
+    flavors.has(flavor) ? flavors.delete(flavor) : flavors.add(flavor);
+    setValue("flavors", Array.from(flavors));
   };
 
   const onSubmit = async (data: FormInputs) => {
@@ -67,10 +70,11 @@ export const ProductForm = ({ product, categories }: Props) => {
     formData.append("description", productToSave.description);
     formData.append("price", productToSave.price.toString());
     formData.append("inStock", productToSave.inStock.toString());
-    formData.append("sizes", productToSave.sizes.toString());
+    formData.append("flavors", productToSave.flavors.toString());
     formData.append("tags", productToSave.tags);
     formData.append("categoryId", productToSave.categoryId);
     formData.append("gender", productToSave.gender);
+    formData.append("marcaId", productToSave.marcaId);
 
     if (images) {
       for (let i = 0; i < images.length; i++) {
@@ -112,7 +116,7 @@ export const ProductForm = ({ product, categories }: Props) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="grid px-5 mb-16 grid-cols-1 sm:px-0 sm:grid-cols-2 gap-3"
+      className="grid grid-cols-1 gap-3 px-5 mb-16 sm:px-0 sm:grid-cols-2"
     >
       {/* Textos */}
       <div className="w-full">
@@ -120,7 +124,7 @@ export const ProductForm = ({ product, categories }: Props) => {
           <span>Título</span>
           <input
             type="text"
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 bg-gray-200 border rounded-md"
             {...register("title", { required: true })}
           />
         </div>
@@ -129,7 +133,7 @@ export const ProductForm = ({ product, categories }: Props) => {
           <span>Slug</span>
           <input
             type="text"
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 bg-gray-200 border rounded-md"
             {...register("slug", { required: true })}
           />
         </div>
@@ -138,7 +142,7 @@ export const ProductForm = ({ product, categories }: Props) => {
           <span>Descripción</span>
           <textarea
             rows={5}
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 bg-gray-200 border rounded-md"
             {...register("description", { required: true })}
           ></textarea>
         </div>
@@ -147,7 +151,7 @@ export const ProductForm = ({ product, categories }: Props) => {
           <span>Price</span>
           <input
             type="number"
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 bg-gray-200 border rounded-md"
             {...register("price", { required: true, min: 0 })}
           />
         </div>
@@ -156,7 +160,7 @@ export const ProductForm = ({ product, categories }: Props) => {
           <span>Tags</span>
           <input
             type="text"
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 bg-gray-200 border rounded-md"
             {...register("tags", { required: true })}
           />
         </div>
@@ -164,7 +168,7 @@ export const ProductForm = ({ product, categories }: Props) => {
         <div className="flex flex-col mb-2">
           <span>Gender</span>
           <select
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 bg-gray-200 border rounded-md"
             {...register("gender", { required: true })}
           >
             <option value="">[Seleccione]</option>
@@ -176,9 +180,24 @@ export const ProductForm = ({ product, categories }: Props) => {
         </div>
 
         <div className="flex flex-col mb-2">
+          <span>Marca</span>
+          <select
+            className="p-2 bg-gray-200 border rounded-md"
+            {...register("marcaId", { required: true })}
+          >
+            <option value="">[Seleccione]</option>
+            {marcas.map((marca) => (
+              <option key={marca.id} value={marca.id}>
+                {marca.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="flex flex-col mb-2">
           <span>Categoria</span>
           <select
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 bg-gray-200 border rounded-md"
             {...register("categoryId", { required: true })}
           >
             <option value="">[Seleccione]</option>
@@ -197,28 +216,28 @@ export const ProductForm = ({ product, categories }: Props) => {
           <input
             type="number"
             min="0"
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 bg-gray-200 border rounded-md"
             {...register("inStock", { required: true, min: 0 })}
           />
         </div>
 
         {/* As checkboxes */}
         <div className="flex flex-col">
-          <span>Tallas</span>
+          <span>Sabores:</span>
           <div className="flex flex-wrap">
-            {sizes.map((size) => (
+            {flavors.map((flavors) => (
               // bg-blue-500 text-white <--- si está seleccionado
               <div
-                key={size}
-                onClick={() => onSizeChanged(size)}
+                key={flavors}
+                onClick={() => onFlavorsChanged(flavors)}
                 className={clsx(
-                  "p-2 border cursor-pointer rounded-md mr-2 mb-2 w-14 transition-all text-center",
+                  "p-3 border cursor-pointer rounded-md mr-1 mb-2 w-auto transition-all text-center",
                   {
-                    "bg-blue-500 text-white": getValues("sizes").includes(size),
+                    "bg-red-700 text-white": getValues("flavors").includes(flavors),
                   }
                 )}
               >
-                <span>{size}</span>
+                <span>{flavors}</span>
               </div>
             ))}
           </div>
@@ -229,12 +248,12 @@ export const ProductForm = ({ product, categories }: Props) => {
               type="file"
               {...register('images')}
               multiple
-              className="p-2 border rounded-md bg-gray-200"
+              className="p-2 bg-gray-200 border rounded-md"
               accept="image/png, image/jpeg, image/avif"
             />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
             {product.ProductImage?.map((image) => (
               <div key={image.id}>
                 <ProductImage
@@ -242,13 +261,13 @@ export const ProductForm = ({ product, categories }: Props) => {
                   src={image.url}
                   width={300}
                   height={300}
-                  className="rounded-t shadow-md w-full"
+                  className="w-full rounded-t shadow-md"
                 />
 
                 <button
                   type="button"
                   onClick={() => deleteProductImage(image.id, image.url)}
-                  className="btn-danger rounded-b-xl shadow-xl w-full"
+                  className="w-full shadow-xl btn-danger rounded-b-xl"
                 >
                   Eliminar
                 </button>
@@ -257,15 +276,18 @@ export const ProductForm = ({ product, categories }: Props) => {
           </div>
         </div>
       </div>
-      <div className="flex justify-between h-full w-full">
-        <button className="btn-primary w-full">Guardar</button>
-        <button
-          type="button"
-          onClick={handleDeleteProduct}
-          className="btn-danger rounded-md shadow-xl w-full"
-        >
-          Eliminar Producto
-        </button>
+      <div className="flex justify-between w-full h-full">
+        <button className="w-full btn-primary">Guardar</button>
+        {/* si es nuevoproducto */}
+        {product.id ? (
+  <button
+    type="button"
+    onClick={handleDeleteProduct}
+    className="w-auto rounded-md shadow-xl btn-danger"
+  >
+    Eliminar Producto
+  </button>
+) : null}
       </div>
     </form>
   );

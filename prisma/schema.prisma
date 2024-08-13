@@ -7,14 +7,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Size {
-  XS
-  S
-  M
-  L
-  XL
-  XXL
-  XXXL
+enum Flavors {
+  Chocolate
+  Fresa
+  Vainilla
+  StrawBerry
+  Mango
+  Mazapan
+  Coco
+  BlueBerry
+  Churro
 }
 
 enum Gender {
@@ -36,14 +38,14 @@ model Category {
 }
 
 model Product {
-  id          String   @id @default(uuid())
+  id          String    @id @default(uuid())
   title       String
   description String
   inStock     Int
-  price       Float    @default(0)
-  sizes       Size[]   @default([])
-  slug        String   @unique
-  tags        String[] @default([])
+  price       Float     @default(0)
+  flavors     Flavors[] @default([])
+  slug        String    @unique
+  tags        String[]  @default([])
   gender      Gender
 
   // Relaciones
@@ -54,7 +56,16 @@ model Product {
   ProductImage ProductImage[]
   OrderItem    OrderItem[]
 
+  marca   Marca  @relation(fields: [marcaId], references: [id])
+  marcaId String
+
   @@index([gender])
+}
+
+model Marca {
+  id      String    @id @default(uuid())
+  name    String
+  Product Product[]
 }
 
 model ProductImage {
@@ -128,7 +139,7 @@ model OrderItem {
   id        String  @id @default(uuid())
   quantity  Int
   price     Float
-  size      Size
+  flavor    Flavors
   // Relaciones
   order     Order   @relation(fields: [orderId], references: [id])
   orderId   String

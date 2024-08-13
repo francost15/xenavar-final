@@ -2,7 +2,7 @@
 
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
-import { Gender, Product, Size } from "@prisma/client";
+import { Flavors, Gender, Product } from "@prisma/client";
 import { z } from "zod";
 import { v2 as cloudinary } from "cloudinary";
 cloudinary.config(process.env.CLOUDINARY_URL ?? "");
@@ -21,9 +21,10 @@ const productSchema = z.object({
     .min(0)
     .transform((val) => Number(val.toFixed(0))),
   categoryId: z.string().uuid(),
-  sizes: z.coerce.string().transform((val) => val.split(",")),
+  flavors: z.coerce.string().transform((val) => val.split(",")),
   tags: z.string(),
   gender: z.nativeEnum(Gender),
+  marcaId: z.string().uuid(),
 });
 
 export const createUpdateProduct = async (formData: FormData) => {
@@ -53,8 +54,8 @@ export const createUpdateProduct = async (formData: FormData) => {
           where: { id },
           data: {
             ...rest,
-            sizes: {
-              set: rest.sizes as Size[],
+            flavors: {
+              set: rest.flavors as Flavors[],
             },
             tags: {
               set: tagsArray,
@@ -66,8 +67,8 @@ export const createUpdateProduct = async (formData: FormData) => {
         product = await prisma.product.create({
           data: {
             ...rest,
-            sizes: {
-              set: rest.sizes as Size[],
+            flavors: {
+              set: rest.flavors as Flavors[],
             },
             tags: {
               set: tagsArray,

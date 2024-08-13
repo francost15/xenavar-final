@@ -1,3 +1,7 @@
+export * from "./carousel/Carousel";
+export * from "./dropdown/DropdownCategory";
+export * from "./dropdown/DropdownGender";
+export * from "./dropdown/DropdownMarcas";
 export * from "./orders/OrderStatus";
 export * from "./paypal/PayPalButton";
 export * from "./product/product-image/ProductImage";
@@ -9,6 +13,7 @@ export * from "./product/slideshow/ProductSlideshow";
 export * from "./product/stock-label/StockLabel";
 export * from "./products/product-grid/ProductGrid";
 export * from "./products/product-grid/ProductGridItem";
+export * from "./products/ProductTable";
 export * from "./provider/Provider";
 export * from "./scrollbutton/ButtonScroll";
 export * from "./search/SearchParams";

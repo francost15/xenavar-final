@@ -42,7 +42,7 @@ export const ProductsInCart = () => {
   return (
     <>
       {productsInCart.map((product) => (
-        <div key={ `${ product.slug }-${ product.size }`  } className="flex mb-5">
+        <div key={ `${ product.slug }-${ product.flavors }`  } className="flex mb-5">
           <ProductImage
             src={product.image}
             width={100}
@@ -59,7 +59,7 @@ export const ProductsInCart = () => {
             <Link 
               className="hover:underline cursor-pointer"
               href={ `/product/${ product.slug } ` }>
-              { product.size } - {product.title}
+              { product.flavors } - {product.title}
             </Link>
             
             <p>${product.price}</p>

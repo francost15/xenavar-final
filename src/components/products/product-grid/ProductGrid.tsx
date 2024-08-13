@@ -1,12 +1,13 @@
 import { Product } from '@/interfaces';
 import { ProductGridItem } from './ProductGridItem';
 
-interface Props {
+interface ProductGridProps {
   products: Product[];
+  marca?: string;
 }
 
 
-export const ProductGrid = ( { products }: Props ) => {
+export const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 gap-10 mb-10">
       {

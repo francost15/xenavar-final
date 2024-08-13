@@ -1,31 +1,35 @@
-import type { Size } from "@/interfaces"
+import type { Flavors} from "@/interfaces"
 import clsx from 'clsx';
 
 interface Props {
-    selectedSize?: Size;
-    availableSizes: Size[];
-    onSizeChanged : (size: Size) => void;
+    selectedFlavor?: Flavors;
+    availableFlavors: Flavors[];
+    onFlavorChanged : (flavor: Flavors) => void;
 }
-export const SizeSelector = ({selectedSize,availableSizes,onSizeChanged}: Props) => {
-  return (
+export const SizeSelector = ({
+    selectedFlavor,
+    availableFlavors,
+    onFlavorChanged
+}: Props) => {
+return (
     <div className="my-5">
-        <h3 className="font-bold mb-4">Tallas disponibles</h3>
-        <div className="flex">
-            {availableSizes.map(size => (
+        <h3 className="mb-4 font-bold">Sabores disponibles</h3>
+        <div className="flex text-xs sm:text-sm md:text-md lg:text-lg xl:text-md">
+            {availableFlavors.map(flavor => (
                 <button 
-                    key={size}
-                    onClick={()=> onSizeChanged(size)} 
+                    key={flavor}
+                    onClick={()=> onFlavorChanged(flavor)} 
                     className={clsx(
-                        "mx-2 hover:bg-blue-500 hover:text-white hover:rounded-md text-lg p-1",
+                        "mx-2 hover:bg-black hover:text-white hover:rounded-md  p-1",
                         {
-                            'bg-blue-500  text-white rounded-md p-1': size === selectedSize
+                            'bg-black  text-white rounded-md p-1': flavor === selectedFlavor
                         }
                     )}
                 >
-                    {size}
+                    {flavor}
                 </button>
             ))}
         </div>
     </div>
-  )
+)
 }

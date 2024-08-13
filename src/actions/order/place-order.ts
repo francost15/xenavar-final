@@ -2,12 +2,12 @@
 import prisma from "@/lib/prisma";
 
 import { auth } from "@/auth.config";
-import type { Address, Size } from "@/interfaces";
+import type { Address, Flavors } from "@/interfaces";
 
 interface ProductToOrder {
   productId: string;
   quantity: number;
-  size: Size;
+  flavor: Flavors;
 }
 
 export const placeOrder = async (
@@ -104,7 +104,7 @@ export const placeOrder = async (
             createMany: {
               data: productIds.map((p) => ({
                 quantity: p.quantity,
-                size: p.size,
+                flavor: p.flavor,
                 productId: p.productId,
                 price:
                   products.find((product) => product.id === p.productId)
