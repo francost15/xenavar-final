@@ -27,9 +27,9 @@ export const Carousel = () => {
   };
 
   return (
-    <div className="mx-auto max-w-9xl">
-      <div className="relative z-10" data-carousel="static">
-        <div className="relative h-64 overflow-hidden rounded-lg md:h-80 xl:h-96">
+    <div className="mx-auto max-w-9xl ">
+      <div className="relative" data-carousel="static">
+        <div className="relative  h-64 overflow-hidden rounded-lg md:h-80 xl:h-96">
           {slides.map((slide, index) => (
             <div
               key={index}
@@ -46,7 +46,7 @@ export const Carousel = () => {
           ))}
         </div>
 
-        <div className="absolute inset-0 z-30 flex items-center justify-between">
+        <div className="absolute inset-0  flex items-center justify-between">
           <button onClick={goToPrevious}  className="p-2 rounded-full bg-white/30 hover:bg-white/50 focus:outline-none">
             <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
@@ -59,7 +59,7 @@ export const Carousel = () => {
           </button>
         </div>
 
-        <div className="absolute z-30 flex space-x-2 -translate-x-1/2 bottom-5 left-1/2">
+        <div className="absolute  flex space-x-2 -translate-x-1/2 bottom-5 left-1/2">
           {slides.map((_, index) => (
             <button
               key={index}

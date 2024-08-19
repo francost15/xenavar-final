@@ -76,9 +76,11 @@ export const Sidebar = () => {
                     </>
                 )}
                 {isAuthenticated && (
+                    // una vez que se de logout se recarga la página
                     <button
                         className='flex items-center w-full p-2 mt-8 transition-all rounded hover:bg-gray-100'
                         onClick={() => logout()}
+                    
                     >
                         <IoLogOutOutline size={30} />
                         <span className='ml-3 text-xl'>Salir</span>
@@ -86,11 +88,11 @@ export const Sidebar = () => {
                 )}
                 {!isAuthenticated && (
                     <>
-                        <div className='block sm:hidden'>
+                        <div className='block md:hidden'>
                                     <Link
                                         href='/allproducts'
                                         onClick={() => closeMenu()}
-                                        className='block px-4 py-2 text-md  mt-8 hover:bg-gray-200'
+                                        className='block  px-4 py-2 text-xl  mt-12 hover:bg-gray-200'
                                     >
                                         Todos los productos
                                     </Link>
@@ -98,49 +100,49 @@ export const Sidebar = () => {
                                 onClick={toggleDropdown}
                                 className='flex items-center p-2 transition-all rounded hover:bg-gray-100 w-full text-left'
                             >
-                                <span className='ml-3 text-md'>Categorías</span>
+                                <span className='ml-2 text-xl'>Categorías</span>
                             </button>
                             {isDropdownOpen && (
-                                <div className='mt-2 bg-gray-100 rounded-md shadow-lg'>
-                                    <Link
-                                        href='/category/proteinas'
-                                        onClick={() => closeMenu()}
-                                        className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200'
-                                    >
-                                        Proteínas
-                                    </Link>
-                                    <Link
-                                        href='/category/creatinas'
-                                        onClick={() => closeMenu()}
-                                        className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200'
-                                    >
-                                        Creatinas
-                                    </Link>
-                                    <Link
-                                        href='/category/preentrenos'
-                                        onClick={() => closeMenu()}
-                                        className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200'
-                                    >
-                                        Preworkouts
-                                    </Link>
-                                    <Link
-                                        href='/category/vitaminas'
-                                        onClick={() => closeMenu()}
-                                        className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200'
-                                    >
-                                        Multivitamínicos
-                                    </Link>
-                                    {marcas.map((marca) => (
-                                        <Link
-                                            key={marca.id}
-                                            href={`/marca/${marca.name}`}
-                                            onClick={() => closeMenu()}
-                                            className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200'
-                                        >
-                                            {marca.name}
-                                        </Link>
-                                    ))}
-                                </div>
+                            <div className='mt-2 bg-gray-100 rounded-md shadow-lg max-h-60 overflow-y-auto'>
+                            <Link
+                                href='/category/proteinas'
+                                onClick={() => closeMenu()}
+                                className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200'
+                            >
+                                Proteínas
+                            </Link>
+                            <Link
+                                href='/category/creatinas'
+                                onClick={() => closeMenu()}
+                                className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200'
+                            >
+                                Creatinas
+                            </Link>
+                            <Link
+                                href='/category/preentrenos'
+                                onClick={() => closeMenu()}
+                                className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200'
+                            >
+                                Preworkouts
+                            </Link>
+                            <Link
+                                href='/category/vitaminas'
+                                onClick={() => closeMenu()}
+                                className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200'
+                            >
+                                Multivitamínicos
+                            </Link>
+                            {marcas.map((marca) => (
+                                <Link
+                                    key={marca.id}
+                                    href={`/marca/${marca.name}`}
+                                    onClick={() => closeMenu()}
+                                    className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200'
+                                >
+                                    {marca.name}
+                                </Link>
+                            ))}
+                        </div>
                             )}
                         </div>
                         <Link

@@ -51,16 +51,16 @@ export default async function OrdersPage({ searchParams }: Props) {
               <th scope="col" className="px-6 py-4 text-sm font-medium text-left text-gray-900">
                 Titulo
               </th>
-              <th scope="col" className="px-6 py-4 text-sm font-medium text-left text-gray-900">
+              <th scope="col" className=" hidden md:table-cell px-6 py-4 text-sm font-bold text-gray-900 whitespace-nowrap">
                 Precio
               </th>
-              <th scope="col" className="px-6 py-4 text-sm font-medium text-left text-gray-900">
+              {/* <th scope="col" className="hidden md:table-cell px-6 py-4 text-sm font-bold text-gray-900 whitespace-nowrap">
                 Género
-              </th>
-              <th scope="col" className="px-6 py-4 text-sm font-medium text-left text-gray-900">
+              </th> */}
+              <th scope="col" className="hidden md:table-cell px-6 py-4 text-sm font-bold text-gray-900 whitespace-nowrap">
                 Tallas
               </th>
-              <th scope="col" className="px-6 py-4 text-sm font-medium text-left text-gray-900">
+              <th scope="col" className="hidden md:table-cell px-6 py-4 text-sm font-bold text-gray-900 whitespace-nowrap">
                 Stock
               </th>
             </tr>
@@ -82,7 +82,7 @@ export default async function OrdersPage({ searchParams }: Props) {
                     />
                   </Link>
                 </td>
-                <td className="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
+                <td className="px-6 py-4 text-xs md:text-sm font-light text-gray-900 whitespace-nowrap">
                   <Link
                     href={`/admin/product/${product.slug}`}
                     className="hover:underline"
@@ -90,17 +90,17 @@ export default async function OrdersPage({ searchParams }: Props) {
                     {product.title}
                   </Link>
                 </td>
-                <td className="px-6 py-4 text-sm font-bold text-gray-900 whitespace-nowrap">
+                <td className="hidden md:table-cell px-6 py-4 text-sm font-bold text-gray-900 whitespace-nowrap">
                   {currencyFormat(product.price)}
                 </td>
 
-                <td className="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
+                {/* <td className="hidden md:table-cell px-6 py-4 text-sm font-bold text-gray-900 whitespace-nowrap">
                   {product.gender}
-                </td>
-                <td className="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
+                </td> */}
+                <td className="hidden md:table-cell px-6 py-4 text-sm font-bold text-gray-900 whitespace-nowrap">
                   {product.flavors.join(", ")}
                 </td>
-                <td className="px-6 py-4 text-sm font-bold text-gray-900 whitespace-nowrap">
+                <td className="hidden md:table-cell px-6 py-4 text-sm font-bold text-gray-900 whitespace-nowrap">
                   {/* si es cero poner en rojo */}
                   {
                     product.inStock > 0 ? (

@@ -28,7 +28,7 @@ export const TopMenu = () => {
         </Link>
       </div>
       {/* DropdownGender */}
-     <DropdownGender />
+     {/* <DropdownGender /> */}
      <Link href={"/allproducts"}
         className="hidden p-2 transition-all rounded-md hover:bg-gray-100 sm:block"
       >
