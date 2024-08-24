@@ -9,7 +9,6 @@ interface SeedProduct {
   tags: string[];
   title: string;
   type: ValidTypes;
-  gender: "men" | "women" | "kid" | "unisex";
   marca: ValidMarcas;
 }
 interface SeedUser {
@@ -148,7 +147,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["sweatshirt"],
       title: "Men’s Chill Crew Neck Sweatshirt",
-      gender: "men",
       marca: "43Suplements",
     },
     {
@@ -162,7 +160,6 @@ export const initialData: SeedData = {
       type: "proteinas",
       tags: ["jacket"],
       title: "Men's Quilted Shirt Jacket",
-      gender: "men",
       marca: "mutant",
     },
 
@@ -177,7 +174,6 @@ export const initialData: SeedData = {
       type: "proteinas",
       tags: ["shirt"],
       title: "Men's Raven Lightweight Zip Up Bomber Jacket",
-      gender: "men",
       marca: "mutant",
     },
 
@@ -192,7 +188,6 @@ export const initialData: SeedData = {
       type: "proteinas",
       tags: ["shirt"],
       title: "Men's Turbine Long Sleeve Tee",
-      gender: "men",
       marca: "43Suplements",
     },
     {
@@ -206,7 +201,6 @@ export const initialData: SeedData = {
       type: "creatinas",
       tags: ["shirt"],
       title: "Men's Turbine Short Sleeve Tee",
-      gender: "men",
       marca: "bhpNutrtion",
     },
     {
@@ -220,7 +214,6 @@ export const initialData: SeedData = {
       type: "creatinas",
       tags: ["shirt"],
       title: "Men's Cybertruck Owl Tee",
-      gender: "men",
       marca: "bhpNutrtion",
     },
     {
@@ -234,7 +227,6 @@ export const initialData: SeedData = {
       type: "creatinas",
       tags: ["shirt"],
       title: "Men's Solar Roof Tee",
-      gender: "men",
       marca: "dragonPharma",
     },
     {
@@ -248,7 +240,6 @@ export const initialData: SeedData = {
       type: "creatinas",
       tags: ["shirt"],
       title: "Men's Let the Sun Shine Tee",
-      gender: "men",
       marca: "gat",
     },
     {
@@ -262,7 +253,6 @@ export const initialData: SeedData = {
       type: "vitaminas",
       tags: ["shirt"],
       title: "Men's 3D Large Wordmark Tee",
-      gender: "men",
       marca: "ghost",
     },
     {
@@ -276,7 +266,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Men's 3D T Logo Tee",
-      gender: "men",
       marca: "insaneLabz",
     },
     {
@@ -290,7 +279,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Men’s 3D Small Wordmark Tee",
-      gender: "men",
       marca: "krakenLabz",
     },
     {
@@ -304,7 +292,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Men's Plaid Mode Tee",
-      gender: "men",
       marca: "metaNutrition",
     },
     {
@@ -318,7 +305,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Men's Powerwall Tee",
-      gender: "men",
       marca: "muscleMeds",
     },
     {
@@ -332,7 +318,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Men's Battery Day Tee",
-      gender: "men",
       marca: "musclePharm",
     },
     {
@@ -346,7 +331,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Men’s Cybertruck Bulletproof Tee",
-      gender: "men",
       marca: "muscleTech",
     },
     {
@@ -360,7 +344,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Men's Haha Yes Tee",
-      gender: "men",
       marca: "nextEvolution",
     },
     {
@@ -374,7 +357,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Men's S3XY Tee",
-      gender: "men",
       marca: "nutrex",
     },
     {
@@ -388,7 +370,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Men's 3D Wordmark Long Sleeve Tee",
-      gender: "men",
       marca: "optimunNutrition",
     },
     {
@@ -402,7 +383,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Men's 3D T Logo Long Sleeve Tee",
-      gender: "men",
       marca: "proSupps",
     },
     {
@@ -416,7 +396,6 @@ export const initialData: SeedData = {
       type: "hoodies",
       tags: ["hoodie"],
       title: "Men's Raven Lightweight Hoodie",
-      gender: "men",
       marca: "raw",
     },
     {
@@ -430,7 +409,6 @@ export const initialData: SeedData = {
       type: "hoodies",
       tags: ["hoodie"],
       title: "Chill Pullover Hoodie",
-      gender: "unisex",
       marca: "rc",
     },
     {
@@ -444,7 +422,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Men's Chill Full Zip Hoodie",
-      gender: "men",
       marca: "ryse",
     },
     {
@@ -458,7 +435,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Men's Chill Quarter Zip Pullover - Gray",
-      gender: "men",
       marca: "universalNutrition",
     },
     {
@@ -472,7 +448,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Men's Chill Quarter Zip Pullover - White",
-      gender: "men",
       marca: "raw",
     },
     {
@@ -486,7 +461,6 @@ export const initialData: SeedData = {
       type: "hoodies",
       tags: ["hoodie"],
       title: "3D Large Wordmark Pullover Hoodie",
-      gender: "unisex",
       marca: "ryse",
     },
     {
@@ -500,7 +474,6 @@ export const initialData: SeedData = {
       type: "hoodies",
       tags: ["hoodie"],
       title: "Cybertruck Graffiti Hoodie",
-      gender: "unisex",
       marca: "universalNutrition",
     },
     {
@@ -514,7 +487,6 @@ export const initialData: SeedData = {
       type: "hats",
       tags: ["hats"],
       title: "Relaxed T Logo Hat",
-      gender: "unisex",
       marca: "muscleMeds",
     },
     {
@@ -528,7 +500,6 @@ export const initialData: SeedData = {
       type: "hats",
       tags: ["hats"],
       title: "Thermal Cuffed Beanie",
-      gender: "unisex",
       marca: "birdman",
     },
     {
@@ -542,7 +513,6 @@ export const initialData: SeedData = {
       type: "hoodies",
       tags: ["hoodie"],
       title: "Women's Cropped Puffer Jacket",
-      gender: "women",
       marca: "birdman",
     },
     {
@@ -556,7 +526,6 @@ export const initialData: SeedData = {
       type: "hoodies",
       tags: ["hoodie"],
       title: "Women's Chill Half Zip Cropped Hoodie",
-      gender: "women",
       marca: "birdman",
     },
     {
@@ -570,7 +539,6 @@ export const initialData: SeedData = {
       type: "hoodies",
       tags: ["hoodie"],
       title: "Women's Raven Slouchy Crew Sweatshirt",
-      gender: "women",
       marca: "birdman",
     },
     {
@@ -584,7 +552,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Women's Turbine Cropped Long Sleeve Tee",
-      gender: "women",
       marca: "muscleMeds",
     },
     {
@@ -598,7 +565,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Women's Turbine Cropped Short Sleeve Tee",
-      gender: "women",
       marca: "muscleMeds",
     },
     {
@@ -612,7 +578,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Women's T Logo Short Sleeve Scoop Neck Tee",
-      gender: "women",
       marca: "muscleMeds",
     },
     {
@@ -626,7 +591,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Women's T Logo Long Sleeve Scoop Neck Tee",
-      gender: "women",
       marca: "muscleMeds",
     },
     {
@@ -640,7 +604,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Women's Small Wordmark Short Sleeve V-Neck Tee",
-      gender: "women",
       marca: "muscleMeds",
     },
     {
@@ -654,7 +617,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Women's Large Wordmark Short Sleeve Crew Neck Tee",
-      gender: "women",
       marca: "muscleMeds",
     },
     {
@@ -668,7 +630,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Women's Plaid Mode Tee",
-      gender: "women",
       marca: "muscleMeds",
     },
     {
@@ -682,7 +643,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Women’s Powerwall Tee",
-      gender: "women",
       marca: "muscleMeds",
     },
     {
@@ -696,7 +656,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Women's Corp Jacket",
-      gender: "women",
       marca: "muscleMeds",
     },
     {
@@ -710,7 +669,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Women's Raven Joggers",
-      gender: "women",
       marca: "muscleMeds",
     },
     {
@@ -724,7 +682,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Kids Cybertruck Long Sleeve Tee",
-      gender: "kid",
       marca: "muscleMeds",
     },
     {
@@ -738,7 +695,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Kids Scribble T Logo Tee",
-      gender: "kid",
       marca: "muscleMeds",
     },
     {
@@ -752,7 +708,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Kids Cybertruck Tee",
-      gender: "kid",
       marca: "muscleMeds",
     },
     {
@@ -766,7 +721,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Kids Racing Stripe Tee",
-      gender: "kid",
       marca: "muscleMeds",
     },
     {
@@ -780,7 +734,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Kids 3D T Logo Tee",
-      gender: "kid",
       marca: "muscleMeds",
     },
     {
@@ -794,7 +747,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Kids Checkered Tee",
-      gender: "kid",
       marca: "muscleMeds",
     },
     {
@@ -808,7 +760,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Made on Earth by Humans Onesie",
-      gender: "kid",
       marca: "muscleMeds",
     },
     {
@@ -822,7 +773,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Scribble T Logo Onesie",
-      gender: "kid",
       marca: "muscleMeds",
     },
     {
@@ -836,7 +786,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Zero Emissions (Almost) Onesie",
-      gender: "kid",
       marca: "muscleMeds",
     },
     {
@@ -850,7 +799,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Kids Cyberquad Bomber Jacket",
-      gender: "kid",
       marca: "muscleMeds",
     },
     {
@@ -864,7 +812,6 @@ export const initialData: SeedData = {
       type: "shirts",
       tags: ["shirt"],
       title: "Kids Corp Jacket",
-      gender: "kid",
       marca: "muscleMeds",
     },
   ],

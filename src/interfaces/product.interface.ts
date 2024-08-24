@@ -9,7 +9,6 @@ export interface Product {
   slug: string;
   tags: string[];
   marca?: Marca; // Asegúrate de incluir esta propiedad
-  gender: Gender;
   categoryId: string; // Aunque no es necesario para la interfaz Product, es útil para otras consultas
 }
 
@@ -29,8 +28,6 @@ export interface ProductImage {
   url: string;
   productId: string;
 }
-
-type Gender = "men" | "women" | "kid" | "unisex";
 
 export type Flavors =
   | "Chocolate"

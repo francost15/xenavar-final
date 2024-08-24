@@ -11,7 +11,6 @@ export const getMarcas = async () => {
     });
     return marcas;
   } catch (error) {
-    console.log(error);
     return [];
   }
 };

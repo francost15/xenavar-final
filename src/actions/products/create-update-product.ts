@@ -2,7 +2,7 @@
 
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
-import { Flavors, Gender, Product } from "@prisma/client";
+import { Flavors, Product } from "@prisma/client";
 import { z } from "zod";
 import { v2 as cloudinary } from "cloudinary";
 cloudinary.config(process.env.CLOUDINARY_URL ?? "");
@@ -23,7 +23,6 @@ const productSchema = z.object({
   categoryId: z.string().uuid(),
   flavors: z.coerce.string().transform((val) => val.split(",")),
   tags: z.string(),
-  gender: z.nativeEnum(Gender),
   marcaId: z.string().uuid(),
 });
 

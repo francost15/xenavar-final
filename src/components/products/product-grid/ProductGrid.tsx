@@ -3,7 +3,6 @@ import { ProductGridItem } from './ProductGridItem';
 
 interface ProductGridProps {
   products: Product[];
-  marca?: string;
 }
 
 

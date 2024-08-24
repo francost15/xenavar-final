@@ -38,9 +38,6 @@ export default async function OrdersPage({ searchParams }: Props) {
           Agregar producto
         </Link>
       </div>
-        <div>
-          {/* aqui filtra por gender men, women, kids */}
-        </div>
       <div className="mb-10">
         <table className="min-w-full">
           <thead className="bg-gray-200 border-b">

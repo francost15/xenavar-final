@@ -24,7 +24,6 @@ interface FormInputs {
   flavors: string[];
   tags: string;
   marcaId:string;
-  gender: "men" | "women" | "kid" | "unisex";
   categoryId: string;
   images?: FileList;
 }
@@ -73,7 +72,6 @@ export const ProductForm = ({ product, categories, marcas }: Props) => {
     formData.append("flavors", productToSave.flavors.toString());
     formData.append("tags", productToSave.tags);
     formData.append("categoryId", productToSave.categoryId);
-    formData.append("gender", productToSave.gender);
     formData.append("marcaId", productToSave.marcaId);
 
     if (images) {
@@ -164,21 +162,7 @@ export const ProductForm = ({ product, categories, marcas }: Props) => {
             {...register("tags", { required: true })}
           />
         </div>
-
-        <div className="flex flex-col mb-2">
-          <span>Gender</span>
-          <select
-            className="p-2 bg-gray-200 border rounded-md"
-            {...register("gender", { required: true })}
-          >
-            <option value="">[Seleccione]</option>
-            <option value="men">Men</option>
-            <option value="women">Women</option>
-            <option value="kid">Kid</option>
-            <option value="unisex">Unisex</option>
-          </select>
-        </div>
-
+        
         <div className="flex flex-col mb-2">
           <span>Marca</span>
           <select

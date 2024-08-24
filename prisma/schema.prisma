@@ -17,6 +17,7 @@ enum Flavors {
   Coco
   BlueBerry
   Churro
+  Other
 }
 
 // enum Gender {
