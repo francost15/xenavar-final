@@ -38,7 +38,8 @@ export type Flavors =
   | "Mazapan"
   | "Coco"
   | "BlueBerry"
-  | "Churro";
+  | "Churro"
+  | "Other";
 
 export type Type =
   | "shirts"

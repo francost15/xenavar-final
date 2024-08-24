@@ -27,7 +27,8 @@ type ValidFlavors =
   | "Mazapan"
   | "Coco"
   | "BlueBerry"
-  | "Churro";
+  | "Churro"
+  | "Other";
 type ValidTypes =
   | "shirts"
   | "pants"
