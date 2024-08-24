@@ -13,7 +13,7 @@ interface Props {
   marcas: Marcas[];
 }
 
-const  flavors= ["Chocolate","Fresa","Vainilla","StrawBerry","Mango","Mazapan","Coco","BlueBerry","Churro"];
+const  flavors= ["Chocolate","Fresa","Vainilla","StrawBerry","Mango","Mazapan","Coco","BlueBerry","Churro","Other"];
 
 interface FormInputs {
   title: string;

@@ -46,7 +46,8 @@ type ValidTypes =
   | "preentrenos"
   | "postentrenos"
   | "barras"
-  | "snacks";
+  | "snacks"
+  | "other";
 type ValidMarcas =
   | "mutant"
   | "43Suplements"
@@ -72,7 +73,8 @@ type ValidMarcas =
   | "raw"
   | "rc"
   | "ryse"
-  | "universalNutrition";
+  | "universalNutrition"
+  | "other";
 
 interface SeedData {
   users: SeedUser[];
@@ -108,6 +110,7 @@ export const initialData: SeedData = {
     "postentrenos",
     "barras",
     "snacks",
+    "other",
   ],
   marcas: [
     "mutant",
@@ -135,6 +138,7 @@ export const initialData: SeedData = {
     "rc",
     "ryse",
     "universalNutrition",
+    "other",
   ],
   products: [
     {
